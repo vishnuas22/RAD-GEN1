@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAD-GEN1 AI Art Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-surreal.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+
+        html {
+        scroll-behavior: smooth;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .input-container img {
+            margin-right: 10px;
+        }
+        .input-container input[type="text"] {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            opacity: 0.7;
+        }
+        .input-container input[type="file"] {
+            display: none;
+        }
+        .input-container label {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-container label:hover {
+            background-color: #0056b3;
+        }
+        .input-container button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-container button:hover {
+            background-color: #0056b3;
+        }
+        .settings-section {
+            display: none;
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .settings-section input {
+            margin-bottom: 10px;
+            display: block;
+        }
+        .settings-section button {
+            background-color: #f400af;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        .settings-section button:hover {
+            background-color: #d10092;
+        }
+        .settings-icon {
+            cursor: pointer;
+            width: 30px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='3d_logo.png') }}" alt="Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">AI Generator</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1 class="title"> R A D - G E N 1 </h1>
+                <h2 class="subtitle">Experience the Impossible</h2>
+            </section>
+            <div class="advanced-sections">
+                <h2>Image Generation</h2>
+                <div class="input-container">
+                    <img src="{{ url_for('static', filename='upload.gif') }}" alt="Upload Icon" onclick="document.getElementById('file-input').click();">
+                    <form id="image-generation-form" action="{{ url_for('generate') }}" method="post" enctype="multipart/form-data">
+                        <input type="text" name="prompt" placeholder="Type a prompt.....">
+                    
+                        <button type="submit">Generate</button>
+                        <input type="file" id="file-input" name="input_image">
+                        <label for="file-input">Upload Image</label>
+                    </form>
+                    <img src="{{ url_for('static', filename='settings_icon.png') }}" alt="Settings Icon" class="settings-icon" onclick="toggleSettings()">
+                </div>
+                <div class="prompt-info">
+                    You still have yet to make your first AI image generation. Please type a prompt above to create your first image set.
+                </div>
+            </div>
+            <div class="settings-section" id="settings-section">
+                <h3>Adjust Settings</h3>
+                <form id="settings-form">
+                    <label for="strength">Strength:</label>
+                    <input type="number" id="strength" name="strength" min="0" max="1" step="0.1" value="0.9">
+                    
+                    <label for="cfg-scale">CFG Scale:</label>
+                    <input type="number" id="cfg-scale" name="cfg_scale" min="1" max="20" step="1" value="8">
+                    
+                    <label for="num-inference-steps">Inference Steps:</label>
+                    <input type="number" id="num-inference-steps" name="num_inference_steps" min="1" max="100" step="1" value="50">
+                    
+                    <label for="seed">Seed:</label>
+                    <input type="number" id="seed" name="seed" value="42">
+                    
+                    <button type="button" onclick="saveSettings()">Save</button>
+                    <button type="button" onclick="toggleSettings()">Close</button>
+                </form>
+            </div>
+        </main>
+        <section class="output-section">
+            <img src="{{ url_for('static', filename='uploads/output_image.png') }}" alt="Generated Art">
+        </section>
+        <section class="gallery">
+            <h2>AI Surrealism Gallery</h2>
+            <div class="gallery-output">
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image1.png') }}" alt="AI Generated Image 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image2.png') }}" alt="AI Generated Image 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image3.png') }}" alt="AI Generated Image 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image4.png') }}" alt="AI Generated Image 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image5.png') }}" alt="AI Generated Image 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image6.png') }}" alt="AI Generated Image 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image7.png') }}" alt="AI Generated Image 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image8.png') }}" alt="AI Generated Image 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image9.png') }}" alt="AI Generated Image 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image10.png') }}" alt="AI Generated Image 10">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image11.png') }}" alt="AI Generated Image 11">
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='ai_generated_image12.png') }}" alt="AI Generated Image 12">
+                </div>
+            </div>
+        </section>
+
+        <section>
+          <!-- Quotes Section --> 
+<!-- Quotes Section -->
+<div id="quotes" class="quotes-section">
+    <h2 class="quotes-heading">Words of Wisdom from Legends</h2>
+    <div class="quote-container">
+        <div class="quote steve-jobs-quote">
+            <img src="static/steve_jobs.jpg" alt="Steve Jobs" class="quote-image">
+            <p class="quote-text">
+                “I think if you do something and it turns out pretty good, then you should go do something else wonderful, not dwell on it for too long. Just figure out what’s next.”
+            </p>
+            <p class="quote-author">- Steve Jobs</p>
+        </div>
+        <div class="quote einstein-quote">
+            <img src="static/einstein.jpg" alt="Albert Einstein" class="quote-image">
+            <p class="quote-text">
+                "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution."
+            </p>
+            <p class="quote-author">- Albert Einstein</p>
+        </div>
+    </div>
+</div>
+
+<!-- Enhanced Parallax Section -->
+<div class="parallax-container">
+    <div class="parallax-content animate__animated animate__bounceIn">
+        <h2 class="parallax-heading">Thank you for visiting!</h2>
+        <p class="parallax-subheading">We hope you enjoyed the journey.</p>
+    </div>
+</div>
+
+
+
+        </section>
+        <footer>
+            <p>&copy; 2024 The DataGhost-RAD-GEN1-Surreal AI Art Platform</p>
+        </footer>
+    </div>
+    <script>
+        function toggleSettings() {
+            const settingsSection = document.getElementById('settings-section');
+            settingsSection.style.display = settingsSection.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function saveSettings() {
+            const form = document.getElementById('settings-form');
+            const formData = new FormData(form);
+            fetch('/save_settings', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json()).then(data => {
+                if (data.success) {
+                    alert('Settings saved successfully!');
+                    toggleSettings();
+                } else {
+                    alert('Error saving settings.');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

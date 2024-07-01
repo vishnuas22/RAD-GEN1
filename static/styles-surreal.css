@@ -1,0 +1,513 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', 'Plus Jakarta Sans', sans-serif;
+    color: #fff;
+    background: url('your-background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+
+}
+
+.container {
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5); /* Added background for better readability */
+}
+
+.logo {
+    height: 110px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+main {
+    padding-top: 180px; /* Added padding to avoid overlap with fixed header */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.01);
+    border-radius: 10px;
+    margin: 10px;
+    max-width: 100%;
+}
+
+.hero h1.title {
+    font-size: 10em;
+    background: linear-gradient(133deg,#3948ea 2%, #bb1dff 2%,#3b1c98 20%,#45016f 8%, #d6d3d3 42%, #f11cbf 68%, #3500f4 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: fade-in 3s ease-in-out;
+
+    /* Subtle black outer shadow */
+    text-shadow: 90 40 90px rgba(78, 77, 81, 0.13);
+
+    /* Glowing effect */
+    filter: drop-shadow(80 20 10px rgba(137, 104, 168, 0.25)) drop-shadow(0 0 5px rgba(244, 0, 175, 0.9)) drop-shadow(0 0 87px rgba(0, 123, 255, 1.6)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.9));
+}
+
+
+.hero h2.subtitle {
+    font-size: 4em;
+    margin: 10px 0;
+    background: linear-gradient(320deg, #9ba2c8 5%, #8205e8 125%,#982f7a 115%, #007bff 50%, #ffffff 115%);
+    background-clip: text;
+    color: transparent;
+    animation: fade-in 2s ease-in-out 1s;
+}
+
+.advanced-sections {
+    max-width: 100%;
+    margin: 20px auto;
+    text-align: center;
+    animation: slide-in 1s ease-in-out 1s;
+}
+
+.advanced-sections h2 {
+    background: linear-gradient(340deg,#ffffff 35%, #8a2be2 62%, #f400af 68%, #007bff 110%, #ffffff 165%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    animation:floating 3s infinite ease-in-out;
+
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 100%;
+    animation: slide-in 1s ease-in-out, glow 1.5s infinite alternate, floating 3s infinite ease-in-out;
+
+}
+
+.input-container img {
+    width: 45px; /* Adjust size of the image icon */
+    margin-right: 5px;
+}
+
+.input-container form {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.input-container input[type="text"] {
+    flex-grow: 1;
+    padding: 15px;
+    margin-left: 10px;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.2); /* Change background color to black with 50% opacity */
+    color: #fff; /* Set text color to white for better visibility */
+}
+
+
+
+.input-container button {
+    background: linear-gradient(135deg, #8a2be2 0%, #f400af 100%);
+    color: rgb(7, 7, 7);
+    border: none;
+    padding: 2px 2px;
+    font-size: 1.2em;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.input-container button:hover {
+    background: linear-gradient(135deg, #661bf2 0%, #f400af 100%);
+}
+
+.prompt-info {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 100%;
+    animation: slide-in 1s ease-in-out 1s;
+}
+
+.output-section {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+    max-width: 80%;
+    text-align: center;
+    animation: slide-in 1s ease-in-out 0.5s;
+}
+
+.output-section p {
+    color: #fff;
+    font-size: 1.2em;
+}
+
+
+
+
+.gallery {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+    max-width: 80%;
+    text-align: center;
+    animation: slide-in 1s ease-in-out 1s;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.gallery {
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+    animation: slide-in 1s ease-in-out 1s;
+}
+
+.gallery h2 {
+    font-size: 2.5em;
+    background: linear-gradient(90deg,#757ff0 42%, #bb1dff 32%,#4885e2 8%, #d6cfd0 62%, #0101f5 18%, #7f59f1 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: fade-in 3s ease-in-out;
+
+    /* Subtle black outer shadow */
+    text-shadow: 90 40 90px rgba(78, 77, 81, 0.13);
+}
+
+.gallery-output {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); /* Responsive grid layout */
+    gap: 10px; /* Space between items */
+    margin-top: 10px;
+    width: 100%;
+    padding: 0 10px; /* Ensure padding on the sides */
+    box-sizing: border-box;
+}
+
+.gallery-item {
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    display: block; /* Ensure images fill their containers */
+    animation: glow 1.5s infinite alternate, floating 3s infinite ease-in-out;
+}
+
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Enhanced Parallax Section Styles */
+.parallax-container {
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(45deg, #ff6ec4, #7873f5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    animation: fadeIn 3s ease-in-out, glowing 2s infinite alternate;
+}
+
+.parallax-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: url('your-background-image.jpg'); /* replace with your image path */
+    background-size: cover;
+    background-attachment: fixed;
+    transform: translateY(-50%);
+    z-index: 0;
+    animation: parallaxMove 10s infinite alternate ease-in-out;
+}
+
+
+.quotes-section {
+    width: 100%;
+    padding: 40px 0;
+    margin: 20px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    position: relative;
+}
+
+.quotes-heading {
+    font-size: 2.5em;
+    background: linear-gradient(45deg, #ff6ec4, #7873f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    animation: textReveal 3s ease-in-out;
+}
+
+.quote-container {
+    width: 3600px;
+    height: 2800px; /* Adjust this value to increase the height of the container */
+    display: flex;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    box-sizing: border-box;
+    align-items: flex-start;
+    padding: 40px;
+}
+
+/* .quote-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-sizing: border-box; /* Add this */
+    /* align-items: flex-start; */
+/* } */ 
+
+.quote {
+    width: 45%;
+    position: absolute;
+    box-sizing: border-box;
+    text-align: left;
+    animation: floating 3s infinite ease-in-out;
+}
+
+.steve-jobs-quote {
+    top: 40px; /* Adjust this value for vertical positioning */
+    left: 40px; /* Adjust this value for horizontal positioning */
+}
+
+.einstein-quote {
+    bottom: 40px; /* Adjust this value for vertical positioning */
+    right: 40px; /* Adjust this value for horizontal positioning */
+    text-align: right;
+}
+
+.quote-image {
+    width: 100%;
+    max-width: 1600px; /* Adjust this value to change the max width of the image */
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 5px solid;
+    animation: glow 1.5s infinite alternate;
+}
+
+.quote-text {
+    font-size: 3.2em; /* Adjust this value to change the text size */
+    background: linear-gradient(45deg, #ff6ec4, #7873f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-fade 5s infinite alternate;
+}
+
+.quote-author {
+    font-size: 2.1em; /* Adjust this value to change the author text size */
+    color: #7873f5;
+}
+
+
+.parallax-container {
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(45deg, #ff6ec4, #7873f5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    animation: fadeIn 3s ease-in-out;
+}
+
+.parallax-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: url('your-background-image.jpg'); /* replace with your image path */
+    background-size: cover;
+    background-attachment: fixed;
+    transform: translateY(-50%);
+    z-index: 0;
+    animation: parallaxMove 10s infinite alternate ease-in-out;
+}
+
+@keyframes parallaxMove {
+    from {
+        transform: translateY(-50%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+
+
+@keyframes glow {
+    from {
+        border-color: #ff6ec4;
+        box-shadow: 0 0 20px #ff6ec4;
+    }
+    to {
+        border-color: #7873f5;
+        box-shadow: 0 0 20px #7873f5;
+    }
+}
+
+@keyframes text-fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+
+
+
+
+@keyframes slide-in {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Keyframes for glowing effect */
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 5px #ff6ec4, 0 0 10px #ff6ec4, 0 0 15px #ff6ec4, 0 0 20px #ff6ec4, 0 0 25px #ff6ec4;
+    }
+    100% {
+        box-shadow: 0 0 20px #ff6ec4, 0 0 25px #ff6ec4, 0 0 30px #ff6ec4, 0 0 35px #ff6ec4, 0 0 40px #ff6ec4;
+    }
+}
+
+/* Keyframes for floating animation */
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes for text reveal */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
